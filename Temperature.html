@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+</head>
+<body>
+    <p>
+        <span> nhiệt độ C :</span>
+        <span><input type="text" id="inputValue"></span>
+        <input type="button" onclick="thucThi()" value="CONVERT">
+    </p>
+    <p id="result"></p>
+
+    <script>
+        function Temperature(do_C) {
+            this.do_C=do_C;
+            this.to_F=function () {
+                return do_C*1.8+32;
+            }
+            this.to_K =function () {
+                return do_C + 273.15;
+            }
+        }
+        function convert() {
+            let nhietDoBanDau = parseInt(document.getElementById("inputValue").value);
+            let tinhToan=new Temperature(nhietDoBanDau);
+            if (nhietDoBanDau>-273) {
+                document.getElementById("result").innerHTML = "Độ F tương ứng là " + tinhToan.to_F() + "<br>";
+                document.getElementById("result").innerHTML += "Độ K tương ứng là " + tinhToan.to_K() + "<br>";
+            }else {
+                document.getElementById("result").innerHTML="nhiệt độ nhập vào không chính xác";
+            }
+        }
+        function thucThi() {
+            convert();
+        }
+
+    </script>
+</body>
+</html>
